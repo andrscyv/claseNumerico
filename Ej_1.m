@@ -1,0 +1,56 @@
+format long; clear all; close all; clc;
+
+%Creamos el handle para nuestra función
+f = @(t,y) -2*y + 4*t;
+
+%evaluamos el método de Euler explícito usando h=0.1 en el intervalo [0,1]
+%y condición inicial y(0)=3
+[w t] = eulerExp(f, 3, 10, 0, 1)
+
+%Guardamos la solución exacta de la EDO evaluada en t=1
+solEx = 4*exp(-2) + 1;
+
+%Evaluamos el error global de nuestro método en t=1
+errGlobal = abs(w(11)-solEx)
+
+%Declaramos el vector que almacenará la cantidad de intervalos que usaremos
+n = zeros(6,1);
+
+%Declaramos el vector que almacenará el tamaño de las h que usaremos
+h = zeros(6,1);
+
+%Declaramos el vector que almacenará las aproximaciones del método con las
+%h diferentes en el tiempo t=1
+y = zeros(6,1);
+
+%Declaramos al vector que corresponde a los errores globales del método en
+%el tiempo t=1
+g = zeros(6,1);
+
+%Le damos valores al vector de intervalos n
+for k=1:6
+    n(k)= 10*2^(k-1);
+end
+
+%Le damos valores al vector de tamaños de h
+for k=1:6
+    h(k) = 1/n(k);
+end
+
+%Evaluamos nuestro método con las diferentes h y almacenamos la
+%aproximación en el tiempo t = 1.
+for k=1:6
+    [w t] = eulerExp(f, 3, n(k), 0, 1);
+    
+    %Almacenamos la última aproximación del método que corresponde al
+    %tiempo deseado
+    y(k) = w(end);
+end
+
+%Damos valores al vector de errores globales
+for k=1:6
+    g(k) = abs(y(k)-solEx);
+end
+
+plot(g,h)
+
