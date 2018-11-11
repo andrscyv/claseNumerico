@@ -1,29 +1,29 @@
 format long; clear all; close all; clc;
 
-%Creamos el handle para nuestra función
+%Creamos el handle para nuestra funciï¿½n
 f = @(t,y) -2*y + 4*t;
 
-%evaluamos el método de Euler explícito usando h=0.1 en el intervalo [0,1]
-%y condición inicial y(0)=3
+%evaluamos el mï¿½todo de Euler explï¿½cito usando h=0.1 en el intervalo [0,1]
+%y condiciï¿½n inicial y(0)=3
 [w t] = eulerExp(f, 3, 10, 0, 1)
 
-%Guardamos la solución exacta de la EDO evaluada en t=1
+%Guardamos la soluciï¿½n exacta de la EDO evaluada en t=1
 solEx = 4*exp(-2) + 1;
 
-%Evaluamos el error global de nuestro método en t=1
+%Evaluamos el error global de nuestro mï¿½todo en t=1
 errGlobal = abs(w(11)-solEx)
 
-%Declaramos el vector que almacenará la cantidad de intervalos que usaremos
+%Declaramos el vector que almacenarï¿½ la cantidad de intervalos que usaremos
 n = zeros(6,1);
 
-%Declaramos el vector que almacenará el tamaño de las h que usaremos
+%Declaramos el vector que almacenarï¿½ el tamaï¿½o de las h que usaremos
 h = zeros(6,1);
 
-%Declaramos el vector que almacenará las aproximaciones del método con las
+%Declaramos el vector que almacenarï¿½ las aproximaciones del mï¿½todo con las
 %h diferentes en el tiempo t=1
 y = zeros(6,1);
 
-%Declaramos al vector que corresponde a los errores globales del método en
+%Declaramos al vector que corresponde a los errores globales del mï¿½todo en
 %el tiempo t=1
 g = zeros(6,1);
 
@@ -32,13 +32,13 @@ for k=1:6
     n(k)= 10*2^(k-1);
 end
 
-%Le damos valores al vector de tamaños de h
+%Le damos valores al vector de tamaï¿½os de h
 for k=1:6
     h(k) = 1/n(k);
 end
 
-%Evaluamos nuestro método con las diferentes h y almacenamos la
-%aproximación en el tiempo t = 1.
+%Evaluamos nuestro mï¿½todo con las diferentes h y almacenamos la
+%aproximaciï¿½n en el tiempo t = 1.
 %Calcular max error local de cada aproximacion
 %La sol exacta , con condicion inicial como parametro
 sol = @(t,y0,t0) (y0-2*t0+1)*exp(-2*t+2*t0)+2*t-1;
@@ -46,7 +46,7 @@ errLocalesMax = zeros(6,1);
 for k=1:6
     [w t] = eulerExp(f, 3, n(k), 0, 1);
     errLocalesMax(k) = maxErrLocal( w, t, sol );
-    %Almacenamos la última aproximación del método que corresponde al
+    %Almacenamos la ï¿½ltima aproximaciï¿½n del mï¿½todo que corresponde al
     %tiempo deseado
     y(k) = w(end);  
 end
@@ -58,7 +58,10 @@ end
 
 
 colK = [0 1 2 3 4 5 ]';
-T = table(colK,h,errLocalesMax);
-T
+%T = table(colK,h,errLocalesMax);
+%T
+%pkg load dataframe
+%tab={"k","paso","maximo de errores locales del metodo de Euler","eoc"; colK(1,1), h(1,1), errLocalesMax(1,1),0};
+%tt = dataframe(tab)
 plot(log(g),log(h))
-
+%plot(t,w)

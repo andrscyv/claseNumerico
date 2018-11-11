@@ -1,8 +1,8 @@
 function [w,t,h] = RK4(t0,T, y0, f, N)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-w = zeros(N+1);
-t = zeros(N+1);
+w = zeros(N+1,1);
+t = zeros(N+1,1);
 w(1) = y0;
 t(1) = t0;
 h = (T-t0)/N;
