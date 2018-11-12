@@ -22,9 +22,9 @@ if err / denom > tol
     wTSig = w0+(h/6)*(s1+4*s3+s2);
     err = abs(wSig-wTSig);
     denom = (max([abs(w0) theta]));
-    
+    bandera = true;
     if err / denom >tol
-        do 
+        while  bandera
             h = h/2;
             s1 = f(t0,w0);
             s2 = f(t0+h,w0+h*s1);
@@ -33,7 +33,10 @@ if err / denom > tol
             wTSig = w0+(h/6)*(s1+4*s3+s2);
             err = abs(wSig-wTSig);
             denom = (max([abs(w0) theta]));
-        until err / denom < tol
+         if err / denom < tol
+             bandera = false;
+         end
+        end
     end
 end
 t = t0+h;
