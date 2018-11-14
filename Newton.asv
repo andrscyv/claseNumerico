@@ -2,7 +2,7 @@ function [a] = NewtonShooting (f,s0, tol,h)
     
     s = zeros(100,1);
     s(1) = s0;
-    deltaF = f(
+    deltaF = f(s0+h)-f(s0))/h
   while f(a) > tol
     a = a - f(a)/fPrima(a);
   end
