@@ -1,6 +1,7 @@
 function [w,t] = eulerExp(f,y0,n,t0,tf)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%Aplica el metodo de Euler Explicito en la funcion f en el intervalo [t0,tf] con
+%n numero de puntos y valor inicial y0. Regresa las aproximaciones w en los 
+%puntos del intervalo y dichos puntos en el arreglo t.
 h = (tf-t0)/n;
 t  = zeros(n+1,1);
 w = zeros(n+1,1);
