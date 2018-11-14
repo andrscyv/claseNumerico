@@ -4,7 +4,7 @@ function [res] = Shooting(s)
 %pvi
 f = @(y1,y2)[y2 4*y2*(2-y1)]';
 y0 = [2 s]';
-n = 1000;
+n = 200;
 t0 = 0;
 tf = 1/2;
 [w,t] = eulerExpVect(f,y0,n,t0,tf);

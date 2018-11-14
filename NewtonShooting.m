@@ -1,4 +1,4 @@
-function [s] = NewtonShooting (f,s0, tol,h)
+function [s,cont] = NewtonShooting (f,s0, tol,h)
     
     s(1) = s0;
     %deltaF = (f(s0+h)-f(s0))/h;
@@ -7,5 +7,5 @@ function [s] = NewtonShooting (f,s0, tol,h)
     s(cont+1) = s(cont) - (1/((f(s(cont)+h)-f(s(cont)))/h))*f(s(cont));
     cont =cont+1;
   end
-  cont=cont-1
+  cont=cont-1;
 end
