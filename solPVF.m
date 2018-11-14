@@ -1,6 +1,6 @@
 function [w,t] = solPVF(s,n)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%Regresa la aproximacion de f del ejercicio 6 de acuerdo a la pendiente calculada s
+
 f = @(y1,y2)[y2 4*y2*(2-y1)]';
 y0 = [2 s]';
 t0 = 0;

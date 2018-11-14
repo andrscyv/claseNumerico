@@ -1,6 +1,5 @@
 function [res] = Shooting(s)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%Calcula la diferencia de la funcion aproximada a f del ejercicio 6 con la pendiente incial s
 %pvi
 f = @(y1,y2)[y2 4*y2*(2-y1)]';
 y0 = [2 s]';
