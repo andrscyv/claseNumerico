@@ -47,8 +47,8 @@ disp('Euler Explicito en el intervalo con h = 1/10')
 
 
 %RK23
-n=180;
-tol  = 0.001;
+n=50;
+tol  = 0.01;
 h0 =0.002;
 [w,t] = rk23(f,y0,t0,n,tol,h0);
 plot(t,w)

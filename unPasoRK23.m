@@ -7,11 +7,11 @@ h = h0;
 s1 = f(t0,w0);
 s2 = f(t0+h,w0+h*s1);
 s3 = f(t0+h/2,w0+(h/2)*(s1+s2)/2);
-wSig = w0+h/2*(s1+s2);
+wSig = w0+(h/2)*(s1+s2);
 wTSig = w0+(h/6)*(s1+4*s3+s2);
 err = abs(wSig-wTSig);
 theta = 0.001;
-denom = (max([abs(w0) theta]));
+denom = (max([abs(wSig) theta]));
 h = (((tol*denom)/err)^(1/3))*h0;
 if err / denom > tol
     
@@ -21,7 +21,7 @@ if err / denom > tol
     wSig = w0+h/2*(s1+s2);
     wTSig = w0+(h/6)*(s1+4*s3+s2);
     err = abs(wSig-wTSig);
-    denom = (max([abs(w0) theta]));
+    denom = (max([abs(wSig) theta]));
     bandera = true;
     if err / denom >tol
         while  bandera
@@ -32,7 +32,7 @@ if err / denom > tol
             wSig = w0+h/2*(s1+s2);
             wTSig = w0+(h/6)*(s1+4*s3+s2);
             err = abs(wSig-wTSig);
-            denom = (max([abs(w0) theta]));
+            denom = (max([abs(wSig) theta]));
          if err / denom < tol
              bandera = false;
          end
@@ -41,7 +41,7 @@ if err / denom > tol
 end
 t = t0+h;
 w = wSig;
-
+h
 
 
 %plot(t,w)
