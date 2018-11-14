@@ -1,6 +1,6 @@
 function [w,t,h] = RK4(t0,T, y0, f, N)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%Calcula las aproximaciones de f en el intervalo [t0,T] con N+1 puntos y condicion
+%inicial y0. Regresa las aproximaciones (w), los puntos evaluados (t) y h
 w = zeros(N+1,1);
 t = zeros(N+1,1);
 w(1) = y0;
