@@ -1,4 +1,4 @@
-close all; clear all; clc;
+close all; clear all; clc; format long;
 disp('Ejercicio 4')
 disp('------------------------------------------------------')
 disp('Funcion a aproximar: ')
@@ -30,19 +30,25 @@ n=200;
 %n = 200 => h = 1/20
 disp('Euler Explicito en el intervalo con h = 1/20')
 [w,t] = eulerExp(f,y0,n,t0,T);
-%plot(t,w)
+plot(t,w)
 
 n=150;
 %n = 150 => h = 1/15
 disp('Euler Explicito en el intervalo con h = 1/15')
 [w,t] = eulerExp(f,y0,n,t0,T);
-%plot(t,w)
+plot(t,w)
 
 n=100;
 %n = 100 => h = 1/10
 disp('Euler Explicito en el intervalo con h = 1/10')
 [w,t] = eulerExp(f,y0,n,t0,T);
-%plot(t,w)
+plot(t,w)
+
+n=50;
+%n = 50 => h = 1/5
+disp('Euler Explicito en el intervalo con h = 1/5')
+[w,t] = eulerExp(f,y0,n,t0,T);
+plot(t,w)
 
 
 
@@ -51,4 +57,4 @@ n=50;
 tol  = 0.01;
 h0 =0.002;
 [w,t] = rk23(f,y0,t0,n,tol,h0);
-plot(t,w)
+%plot(t,w)
