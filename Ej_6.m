@@ -22,11 +22,14 @@ numIter
 disp('Valores de F(s) para cada pendiente calculada: ')
 %Los valores de F(s) para cada s_i calculada
 valF_s = arrayfun(f,s)
-
+disp('Valores de s: ')
+Val_S = s
 %Calculamos la aproximacion con euler explicito
 % para la s que encuentra Newton
 n=200;
 [w,t] = solPVF(s(numIter+1),n);
+plot(t,w)
+hold on
 
 disp('')
 %Calculamos el error maximo entre la sol exacta y la aprox
@@ -34,3 +37,4 @@ sol = @(t)2-pi/4*tan(pi*t/2);
 exact = sol(t);
 disp('Maximo de los errores del intervalo [0,1/2]: ')
 maxErrorConSolExact = max(abs(w-exact'))
+%plot(t,exact)

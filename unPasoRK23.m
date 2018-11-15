@@ -41,7 +41,6 @@ if err / denom > tol
 end
 t = t0+h;
 w = wSig;
-h;
 
 
 %plot(t,w)
